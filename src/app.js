@@ -64,9 +64,7 @@ app.engine('.hbs', exhbs({
 }))
 app.set('view engine', 'hbs')
 //middleweres
-app.use(express.urlencoded({
-    extended: false
-}))
+app.use(express.urlencoded({}))
 app.use(method0verride('_method'))
 app.use(session({
     secret: 'secApp',
