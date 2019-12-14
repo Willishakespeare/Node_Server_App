@@ -12,10 +12,15 @@ for (i = 0; i < close.length; i++) {
 
         // Set the opacity of div to 0 (transparent)
         div.style.opacity = "0";
+        div.remove();
 
         // Hide the div after 600ms (the same amount of milliseconds it takes to fade out)
         setTimeout(function () {
             div.style.display = "none";
         }, 300);
+
+        if (close.length < 1) {
+            document.getElementById("alertContainerID").remove();
+        }
     }
 }

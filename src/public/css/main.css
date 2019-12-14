@@ -139,6 +139,16 @@ body {
     font-weight: 600;
 }
 
+.alert2 {
+    padding: 20px;
+    /* Red */
+    background-color: #37b85e;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
 /* The close button */
 .buttonAlertClose {
     margin-left: 15px;
