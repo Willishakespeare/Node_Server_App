@@ -44,7 +44,7 @@ router.get('/notes', async (req, res) => {
     const note = await Note.find().sort({
         date: 'desc'
     })
-    res.render('notes/all', {
+    res.render('notes', {
         note
     })
 })

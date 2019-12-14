@@ -1,0 +1,36 @@
+<div class="cardContainer">
+    {{#each note}}
+    <div class="cardContainerShow">
+        <div class="cardShow">
+            <a>
+                {{title}} <a href="/notes/edit/{{_id}}"> <img class="cardShowIcons" src="/img/edit.svg" alt=""></a>
+            </a>
+        </div>
+        <div class="cardShow">
+            <a>
+                {{FormatDate date }}
+            </a>
+        </div>
+        <div class="cardShow">
+            <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="cardShowDelete" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+
+    {{else}}
+    <div class="cardContainerShow">
+        <div class="cardShow">
+            <a>
+                No hay notas Agregadas
+            </a>
+        </div>
+        <div class="cardShow">
+            <a href="/notes/add">
+                Agregar Nueva nota
+            </a>
+        </div>
+    </div>
+    {{/each}}
+</div>
