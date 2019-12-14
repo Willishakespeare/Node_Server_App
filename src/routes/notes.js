@@ -40,7 +40,7 @@ router.post('/notes/addNote', async (req, res) => {
     }
 })
 
-router.get('/notes/all', async (req, res) => {
+router.get('/notes', async (req, res) => {
     const note = await Note.find().sort({
         date: 'desc'
     })
