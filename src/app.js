@@ -13,6 +13,9 @@ require('./database')
 //setings
 app.set('port', process.env.PORT || 3000)
 app.set('views', path.join(__dirname, 'views'))
+//static files 
+app.use(express.static(path.join(__dirname, 'public')))
+//
 app.engine('.hbs', exhbs({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
@@ -64,7 +67,9 @@ app.engine('.hbs', exhbs({
 }))
 app.set('view engine', 'hbs')
 //middleweres
-app.use(express.urlencoded({}))
+app.use(express.urlencoded({
+    extended: false
+}))
 app.use(method0verride('_method'))
 app.use(session({
     secret: 'secApp',
@@ -82,9 +87,6 @@ app.use((req, res, next) => {
 app.use(require('./routes/index'))
 app.use(require('./routes/notes'))
 app.use(require('./routes/users'))
-//static files 
-process.env.PWD = process.cwd();
-app.use(express.static(path.join(process.env.PWD, 'public')))
 // server 
 app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'))
