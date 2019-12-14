@@ -83,7 +83,8 @@ app.use(require('./routes/index'))
 app.use(require('./routes/notes'))
 app.use(require('./routes/users'))
 //static files 
-app.use(express.static(path.join(__dirname, 'public')))
+process.env.PWD = process.cwd();
+app.use(express.static(path.join(process.env.PWD, 'public')))
 // server 
 app.listen(app.get('port'), () => {
     console.log('Server on port', app.get('port'))
