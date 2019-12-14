@@ -1,0 +1,19 @@
+<div class="addCard">
+    <div class="addCardPrimary">
+        <div class="addCardHeader">
+            <span>Edit Note</span>
+        </div>
+
+        <form class="addCardBody" action="/notes/editNote/{{note._id}}?_method=PUT" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+
+            <input class="inputCard" type="text" name='title' placeholder="title" value="{{note.title}}" autofocus>
+
+            <input class="txtCard" name="description" placeholder="description" value="{{note.description}}"></input>
+
+            <button class="buttonCard" type="submit"> Edit </button>
+
+        </form>
+    </div>
+
+</div>

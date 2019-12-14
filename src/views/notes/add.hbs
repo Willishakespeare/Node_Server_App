@@ -1,0 +1,32 @@
+<div class="alertContainer">
+    {{#each errors}}
+    <div class="alert">
+        <span>
+            {{text}}
+        </span>
+        <span class="buttonAlertClose">&times</span>
+    </div>
+
+    {{/each}}
+</div>
+
+
+<div class="addCard">
+
+    <div class="addCardPrimary">
+
+        <div class="addCardHeader">
+            <span>Add New Note</span>
+        </div>
+
+        <form class="addCardBody" action="/notes/addNote" method="POST">
+
+            <input class="inputCard" type="text" name='title' placeholder="Title" autofocus>
+
+            <input class="txtCard" name="description" placeholder="Description"></input>
+
+            <button class="buttonCard" type="submit"> Save </button>
+
+        </form>
+    </div>
+</div>

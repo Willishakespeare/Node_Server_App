@@ -1,0 +1,301 @@
+/* The alert message box */
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: #254775;
+    display: flex;
+    flex-direction: column;
+}
+
+.headerClass {
+    width: 100%;
+    height: 10%;
+    background-color: #4E9BFF;
+    display: flex;
+    flex-direction: row;
+}
+
+.headerLogo {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.headerLogo>img {
+    height: 80%;
+}
+
+.headerContainer {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.menuContainer {
+    height: 50%;
+    width: 70%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.menuContainerDiv {
+
+    background-color: #7EB6FF;
+    border-radius: 30px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.menuContainerDiv:hover {
+    background-color: #3B75C1;
+}
+
+.menuContainerDiv>span {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.containerClass {
+    width: 100%;
+    height: 90%;
+    margin: 0;
+    padding: 0;
+}
+
+.footerClass {
+    background-color: #4E9BFF;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+}
+
+.alertContainer {
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 50px;
+    float: inline-end;
+}
+
+.alert {
+    padding: 20px;
+    /* Red */
+    background-color: #ff4747;
+    color: white;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+/* The close button */
+.buttonAlertClose {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.buttonAlertClose:hover {
+    color: black;
+}
+
+
+.cardContainer {
+    width: 100%;
+    height: 100%;
+}
+
+.cardContainerShow {
+    width: 100%;
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #3B75C1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cardShow {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.cardShow>a {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #fff;
+}
+
+.cardShowIcons {
+    width: 15px;
+    margin-left: 20px;
+}
+
+.cardShowDelete {
+    width: 100px;
+    height: 30px;
+    border-radius: 25px;
+    background-color: #FF3D3D;
+    border: none;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.addCard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.addCardPrimary {
+    width: 25%;
+    height: 80%;
+    background-color: #3B75C1;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.addCardHeader {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: #fff;
+}
+
+.addCardBody {
+    width: 100%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-evenly;
+}
+
+.inputCard {
+    height: 50px;
+    width: 90%;
+    border-radius: 5px;
+    border-style: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-align: center;
+    justify-content: center;
+}
+
+.txtCard {
+    height: 50px;
+    width: 90%;
+    border-radius: 5px;
+    border-style: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    padding-left: 5px;
+    resize: none;
+    text-align: center;
+    justify-content: center;
+}
+
+.buttonCard {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #FF3D3D;
+    border: none;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+}
