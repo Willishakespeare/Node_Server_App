@@ -1,1 +1,16 @@
-<h1>ingresar</h1>
+<div class="addCard">
+
+    <div class="addCardPrimary">
+
+        <div class="addCardHeader">
+            <span>Login</span>
+        </div>
+
+        <form class="addCardBody" action="/users/signin" method="POST">
+            <input class="inputCard" type="text" name='iduser' placeholder="Id" value="{{iduser}}" autofocus>
+            <input class="txtCard" type="password" name="password" placeholder="Password" value="{{password}}"></input>
+            <button class="buttonCard" type="submit"> Sign In </button>
+
+        </form>
+    </div>
+</div>

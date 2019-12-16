@@ -1,1 +1,19 @@
-<h1>register</h1>
+<div class="addCard">
+
+    <div class="addCardPrimary">
+
+        <div class="addCardHeader">
+            <span>Registrar Cuenta</span>
+        </div>
+
+        <form class="addCardBody" action="/users/signup" method="POST">
+            <input class="inputCard" type="text" name='name' placeholder="Name" value="{{name}}" autofocus>
+            <input class="inputCard" type="text" name='iduser' placeholder="Id" value="{{iduser}}">
+            <input class="txtCard" type="password" name="password" placeholder="Password" value="{{password}}"></input>
+            <input class="txtCard" type="password" name="confirm_password" placeholder="Password"
+                value="{{confirm_password}}"></input>
+            <button class="buttonCard" type="submit"> Sign Up </button>
+
+        </form>
+    </div>
+</div>

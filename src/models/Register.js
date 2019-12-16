@@ -6,18 +6,21 @@ const {
 
 
 const NoteSchema = new Schema({
-    title: {
+    name: {
         type: String,
         required: true
     },
-    description: {
+    id: {
         type: String,
         required: true
     },
     date: {
         type: Date,
-        default: Date.now
+        default: () => {
+            return new Date()
+        }
     }
 })
 
-module.exports = mongoose.model('Note', NoteSchema, 'AllNotes')
+
+module.exports = mongoose.model('Register', NoteSchema, 'AllRegister')

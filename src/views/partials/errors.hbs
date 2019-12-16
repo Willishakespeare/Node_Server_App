@@ -1,23 +1,25 @@
-{{#if success_msg}}
-<div class="alertContainer" id="alertContainerID">
-    <div class="alert2">
-        <span>
-            {{success_msg}}
-        </span>
-        <span class="buttonAlertClose">&times</span>
-    </div>
-</div>
-
-{{/if}}
-
-{{#if error_msg}}
+{{#if error}}
 <div class="alertContainer" id="alertContainerID">
     <div class="alert">
         <span>
-            {{error_msg}}
+            {{error}}
         </span>
         <span class="buttonAlertClose">&times</span>
     </div>
 </div>
+{{/if}}
 
+
+{{#if errors}}
+<div class="alertContainer" id="alertContainerID">
+    {{#each errors}}
+    <div class="alert">
+        <span>
+            {{text}}
+        </span>
+        <span class="buttonAlertClose">&times</span>
+    </div>
+
+    {{/each}}
+</div>
 {{/if}}
