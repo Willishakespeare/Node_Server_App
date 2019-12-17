@@ -5,6 +5,9 @@ const router = express.Router()
 const User = require('../models/Users')
 
 const passport = require('passport')
+const {
+    isAuthenticated
+} = require('../helpers/auth')
 
 router.get('/users/signin', (req, res) => {
     res.render('users/signin')
@@ -18,7 +21,7 @@ router.post('/users/signin', passport.authenticate('local', {
 }))
 
 
-router.get('/users/signup', (req, res) => {
+router.get('/users/signup', isAuthenticated, (req, res) => {
 
     res.render('users/signup')
 })
@@ -84,7 +87,7 @@ router.post('/users/signup', async (req, res) => {
 
 router.get('/users/logout', (req, res) => {
     req.logout()
-    res.redirect('/')
+    res.redirect('/users/signin')
 })
 
 module.exports = router

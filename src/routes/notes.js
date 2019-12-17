@@ -1,47 +1,53 @@
 const express = require('express')
 const router = express.Router()
 
-const Note = require('../models/Note');
+const Note = require('../models/Register');
+const {
+    isAuthenticated
+} = require('../helpers/auth')
 
-router.get('/notes/add', (req, res) => {
-    res.render('notes/add')
-})
+// router.get('/notes/add', isAuthenticated, (req, res) => {
+//     res.render('notes/add')
+// })
 
-router.post('/notes/addNote', async (req, res) => {
-    const {
-        title,
-        description
-    } = req.body
-    const errors = []
-    if (!title) {
-        errors.push({
-            text: 'Please Write a Title'
-        })
-    }
-    if (!description) {
-        errors.push({
-            text: 'Please Write a Description'
-        })
-    }
-    if (errors.length > 0) {
-        res.render('notes/add', {
-            errors,
-            title,
-            description
-        })
-    } else {
-        const addNote = new Note({
-            title,
-            description,
-        })
-        await addNote.save()
-        req.flash('success_msg', 'Nota Agregada')
-        res.redirect('/notes')
-    }
-})
+// router.post('/notes/addNote', async (req, res) => {
+//     const {
+//         name,
+//         description,
+//         id
+//     } = req.body
+//     const errors = []
+//     if (!name) {
+//         errors.push({
+//             text: 'Please Write a name'
+//         })
+//     }
+//     if (!description) {
+//         errors.push({
+//             text: 'Please Write a Description'
+//         })
+//     }
+//     if (errors.length > 0) {
+//         res.render('notes/add', {
+//             errors,
+//             name,
+//             description
+//         })
+//     } else {
+//         const addNote = new Note({
+//             name,
+//             description,
+//         })
+//         await addNote.save()
+//         req.flash('success_msg', 'Nota Agregada')
+//         res.redirect('/notes')
+//     }
+// })
 
-router.get('/notes', async (req, res) => {
-    const note = await Note.find().sort({
+router.get('/notes', isAuthenticated, async (req, res) => {
+    const note = await Note.find({
+        id: req.user.iduser
+    }).sort({
         date: 'desc'
     })
     res.render('notes', {
@@ -49,7 +55,7 @@ router.get('/notes', async (req, res) => {
     })
 })
 
-router.get('/notes/edit/:id', async (req, res) => {
+router.get('/notes/edit/:id', isAuthenticated, async (req, res) => {
     const note = await Note.findById(req.params.id)
     res.render('notes/edit', {
         note
@@ -58,13 +64,13 @@ router.get('/notes/edit/:id', async (req, res) => {
 
 router.put('/notes/editNote/:id', async (req, res) => {
     const {
-        title,
-        description
+        name,
+        id
     } = req.body
 
     await Note.findByIdAndUpdate(req.params.id, {
-        title,
-        description
+        name,
+        id
     })
     req.flash('success_msg', 'Nota Actualizada')
     res.redirect('/notes')

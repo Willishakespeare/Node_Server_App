@@ -3,24 +3,37 @@
     <div class="cardContainerShow">
         <div class="cardShow">
             <a>
-                {{title}} <a href="/notes/edit/{{_id}}"> <img class="cardShowIcons" src="/img/edit.svg" alt=""></a>
+                {{#if_eq user.level 'admin'}}
+                {{name}} <a href="/notes/edit/{{_id}}"> <img class="cardShowIcons" src="/img/edit.svg" alt=""></a>
+                {{else}}
+                {{name}}
+                {{/if_eq}}
             </a>
         </div>
         <div class="cardShow">
             <a>
                 {{FormatDate date }}
             </a>
+            <a>
+                {{Time date }}
+            </a>
         </div>
+        {{#if_eq user.level 'admin'}}
         <div class="cardShow">
             <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="cardShowDelete" type="submit">Delete</button>
             </form>
         </div>
+        {{/if_eq}}
+
     </div>
 
     {{else}}
     <div class="cardContainerShow">
+        <span class="welcome">{{user.name}}</span>
+
+        {{#if_eq user.level 'admin'}}
         <div class="cardShow">
             <a>
                 No hay notas Agregadas
@@ -31,6 +44,8 @@
                 Agregar Nueva nota
             </a>
         </div>
+        {{/if_eq}}
+
     </div>
     {{/each}}
 </div>

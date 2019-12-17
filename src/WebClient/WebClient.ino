@@ -1,46 +1,48 @@
 #include <Ethernet.h>
 #include <SPI.h>
 #include <ArduinoHttpClient.h>
-#include <MFRC522.h>
 
 #include <Wire.h>
 #include <Adafruit_PN532.h>
 
-#define RST_PIN  9    //Pin 9 para el reset del RC522
-#define SS_PIN  10   //Pin 10 para el SS (SDA) del RC522
-MFRC522 mfrc522(SS_PIN, RST_PIN); //Creamos el objeto para el RC522
 #define PN532_IRQ (2)
 #define PN532_RESET (3)
 
 Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET);
 
-byte mac[] = {  0x90, 0xA2, 0xDA, 0x0D, 0xF6, 0xFF };
-byte ip[] = {  192, 168, 0, 100};
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+char server[] = "www.cetmar.tk";
 
-char serverAddress[] = "www.cetmar.tk";  // server address
-int port = 80;
+
+IPAddress ip(192, 168, 0, 177);
+IPAddress myDns(192, 168, 0, 1);
+
 
 EthernetClient client;
-HttpClient cliente = HttpClient(client, serverAddress, port);
 
 
 void setup()
 {
-  Ethernet.begin(mac, ip);
+  if (Ethernet.begin(mac) == 0) {
+
+    Ethernet.begin(mac, ip, myDns);
+  } else {
+
+  }
 
   nfc.begin();
   nfc.setPassiveActivationRetries(0xFF);
   nfc.SAMConfig();
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
-  Serial.begin(9600);
 
 }
 
 void loop()
 {
-   digitalWrite(6, LOW);
-    digitalWrite(7, LOW);
+  boolean stat = false;
+  digitalWrite(6, LOW);
+  digitalWrite(7, LOW);
   uint8_t success;
   uint8_t uid[] = {0, 0, 0, 0, 0, 0, 0};
   uint8_t uidLength;
@@ -67,29 +69,42 @@ void loop()
           uidString = uidString + char(data[i]);
         }
 
-
+        boolean stat = false;
         String contentType = "application/x-www-form-urlencoded";
         String postData = "?id=Arduino&token=";
-        postData = postData + uidString;
+        postData = postData + uidString; 
 
-        cliente.get("/arduino" +  postData);
+        if (client.connect(server, 80)) {
 
-        int statusCode = cliente.responseStatusCode();
-        String response = cliente.responseBody();
-        Serial.println(response);
-        cliente.stop();
+          client.println("GET /arduino" + postData + " HTTP/1.1");
+          client.println("Host: www.cetmar.tk");
+          client.println("Connection: close");
+          client.println();
 
-        if (response.equals("ok")) {
+        }
+        while (client.connected()) {
+          while (client.available() > 0) {
+            char c = client.read();
+
+            if (c == '{') {
+              stat = false;
+            }
+
+            else if (c == '}') {
+              stat = true;
+            }
+          }
+        }
+        if (stat){
           digitalWrite(7, HIGH);
           delay(2000);
-         
         }
-
-        else if(response.equals("bad")) {
+        else {
           digitalWrite(6, HIGH);
           delay(2000);
-          
         }
+
+        client.stop();
 
       }
     }

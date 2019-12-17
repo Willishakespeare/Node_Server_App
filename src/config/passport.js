@@ -9,7 +9,6 @@ passport.use(new LocalStrategy({
     const user = await Users.findOne({
         iduser: iduser
     })
-    console.log(user)
     if (!user) {
         return done(null, false, {
             message: 'Not User Found'
@@ -17,6 +16,7 @@ passport.use(new LocalStrategy({
     } else {
         const match = await user.matchPassword(password)
         if (match) {
+            const level = user.level
             return done(null, user)
         } else {
             return done(null, false, {
