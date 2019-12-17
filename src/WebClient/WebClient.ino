@@ -17,8 +17,8 @@ Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET);
 byte mac[] = {  0x90, 0xA2, 0xDA, 0x0D, 0xF6, 0xFF };
 byte ip[] = {  192, 168, 0, 100};
 
-char serverAddress[] = "192.168.0.7";  // server address
-int port = 3000;
+char serverAddress[] = "www.cetmar.tk";  // server address
+int port = 80;
 
 EthernetClient client;
 HttpClient cliente = HttpClient(client, serverAddress, port);
@@ -33,6 +33,7 @@ void setup()
   nfc.SAMConfig();
   pinMode(6, OUTPUT);
   pinMode(7, OUTPUT);
+  Serial.begin(9600);
 
 }
 
@@ -75,6 +76,7 @@ void loop()
 
         int statusCode = cliente.responseStatusCode();
         String response = cliente.responseBody();
+        Serial.println(response);
         cliente.stop();
 
         if (response.equals("ok")) {

@@ -13,9 +13,9 @@ router.get('/arduino', async (req, res) => {
     }
     const users = await Users.find(query)
     if (isEmpty(users)) {
-        res.send("bad");
+        res.send("code0001");
     } else {
-        res.send("ok");
+        res.send("code0002");
 
         var addquery = {
             name: users[0].name,
