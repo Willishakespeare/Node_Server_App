@@ -3,26 +3,26 @@
     <div class="headerContainer">
         <div class="menuContainer">
             <a href="/" class="menuContainerDiv">
-                <span class="noselect">Home</span>
+                <span class="noselect">Pagina Princial</span>
             </a>
 
             {{#if user}}
             <a href="/notes" class="menuContainerDiv">
-                <span class="noselect" href="/notes">Notes</span>
+                <span class="noselect" href="/notes">Asistencia</span>
             </a>
 
             {{#if_eq user.level 'admin'}}
             <a class="menuContainerDiv" href="/users/signup">
-                <span class="noselect">Sign Up</span>
+                <span class="noselect">Agregar Usuario</span>
             </a>
             {{/if_eq}}
 
             <a class="menuContainerDiv" href="/users/logout">
-                <span class="noselect">Logout</span>
+                <span class="noselect">Cerrar Secion</span>
             </a>
             {{else}}
             <a class="menuContainerDiv" href="/users/signin">
-                <span class="noselect">Sign In</span>
+                <span class="noselect">Logearte</span>
             </a>
             {{/if }}
 

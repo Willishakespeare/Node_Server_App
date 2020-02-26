@@ -7,10 +7,20 @@
         </div>
 
         <form class="addCardBody" action="/users/signin" method="POST">
-            <input class="inputCard" type="text" name='iduser' placeholder="Id" value="{{iduser}}" autofocus>
-            <input class="txtCard" type="password" name="password" placeholder="Password" value="{{password}}"></input>
-            <button class="buttonCard" type="submit"> Sign In </button>
+            <div>
+                <span> Usuario</span>
+                <input class="inputCard" type="text" name='iduser' placeholder="Id" value="{{iduser}}" autofocus>
+            </div>
 
+            <div>
+                <span>Contraseña</span>
+                <input class="txtCard" type="password" name="password" placeholder="Password"
+                    value="{{password}}"></input>
+            </div>
+            <div> <input type="checkbox"> <span>Recordar Usuario</span></div>
+
+            <button class="buttonCard" type="submit"> Sign In </button>
+            <div>Forgott Password?</div>
         </form>
     </div>
 </div>
